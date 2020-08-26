@@ -19,29 +19,34 @@ var app = http.createServer(function(request, response) {
 
     }
     response.writeHead(200);
+    fs.readFile(__dirname+`/data/${query.name}`, 'utf8', (err, data) => {
+        if (err) throw err;
+        console.log("true");
 
-    var template = `
-    <!doctype html>
-    <html>
-    <head>
-      <title>WEB1 - ${title}</title>
-      <meta charset="utf-8">
-    </head>
-    <body>
-      <h1><a href="/">WEB</a></h1>
-      <ol>
-        <li><a href="/?name=HTML">HTML</a></li>
-        <li><a href="/?name=CSS">CSS</a></li>
-        <li><a href="/?name=JavaScript">JavaScript</a></li>
-      </ol>
-      <h2>${title}</h2>
-      <p>The World Wide Web (abbreviated WWW or the Web) is an information space where documents and other web resources are identified by Uniform Resource Locators (URLs), interlinked by hypertext links, and can be accessed via the Internet.[1] English scientist Tim Berners-Lee invented the World Wide Web in 1989. He wrote the first web browser computer program in 1990 while employed at CERN in Switzerland.[2][3] The Web browser was released outside of CERN in 1991, first to other research institutions starting in January 1991 and to the general public on the Internet in August 1991.
-      </p>
-    </body>
-    </html>
-    `;
-    response.end(template);
-    //  readFileSync : 경로에 해당 하는 파일을 읽어 가져온다.
-    // response.end : 사용자에게 전송할 데이터 생성
+        var template = `
+        <!doctype html>
+        <html>
+        <head>
+          <title>WEB1 - ${title}</title>
+          <meta charset="utf-8">
+        </head>
+        <body>
+          <h1><a href="/">WEB</a></h1>
+          <ol>
+            <li><a href="/?name=HTML">HTML</a></li>
+            <li><a href="/?name=CSS">CSS</a></li>
+            <li><a href="/?name=JavaScript">JavaScript</a></li>
+          </ol>
+          <h2>${title}</h2>
+          <p>${data}</p>
+        </body>
+        </html>
+        `;
+        response.end(template);
+    });
+
 });
 app.listen(3000);
+
+    //  readFileSync : 경로에 해당 하는 파일을 읽어 가져온다.
+    // response.end : 사용자에게 전송할 데이터 생성
