@@ -1,3 +1,5 @@
 # n0de !!!!!!!!
 
-<img src="https://giphy.com/gifs/zuevk0rZMzK5a/html5" width=400>     
+<p align="center">
+    <img src="https://media.giphy.com/media/zuevk0rZMzK5a/giphy.gif" width=400>     
+</p>
